@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>登录</title>
+        <meta name="keywords" content="登录">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+        <meta itemprop="name" content="登录"/>
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/js.js"></script>
+        <script type="text/javascript" src="js/jcookie.js"></script>
+        <link href="css/commonStyle.css" rel="stylesheet"/>
+        <link href="css/specialStyle.css" rel="stylesheet"/>
+        <link href="css/mediaAdapter.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function () {
+                $(".login").click(function () {
+                    var url = "api/login"
+                    $.post(url, //异步处理动态页面
+                            {
+                                name: $(".name").val(),
+                                passwd: $('.passwd').val()
+                            }, //获取类名为"name"文本的值，以NAME异步传值
+                            function (data) {//data为反回值，function进行反回值处理
+                                if (data.retcode == 0)
+                                {
+                                    $.cookie("token", data.token);
+                                    window.location.href = "../join.html";
+                                } else
+                                {
+                                    $(".notice").val("<p>用户名密码错误</p>");//获得得反回值后，将其填入到类名为"content"的文本框中
+                                }
+                            });
+                });
+                $(".name").click(function () {
+                    $(".notice").val("");//获得得反回值后，将其填入到类名为"content"的文本框中
+                });
+            });
+        </script>
+        <!-- 最外层 -->
+        <div class="fullPage">
+            <div class="p3">
+                <!-- 内容 -->
+                <div class="content">
+                    <div class="p3_part"> 
+                        <div class="p3_part1">
+                            <!-- 加入表单 -->
+                            <form id="loginForm"  method="post">
+                                <input placeholder="请输入您的手机号或邮箱" type="text" class="name" name="name"><br/>
+                                <input placeholder="请输入6-20位密码" type="password" class="passwd" name="password"><br/>
+                            </form>
+                            <div class="notice"></div>
+                        </div>	
+
+                        <div class="p3_part2">
+                            <div class="login">登录</div>
+                            <div class="problem">登录遇到问题？</div>
+                        </div>		
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

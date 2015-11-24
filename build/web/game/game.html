@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>图啥PK</title>
+        <meta name="keywords" content="图啥PK">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+        <meta itemprop="name" content="图啥PK"/>
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/js.js"></script>
+        <script type="text/javascript" src="js/jcookie.js"></script>
+        <link href="css/commonStyle.css" rel="stylesheet"/>
+        <link href="css/specialStyle.css" rel="stylesheet"/>
+        <link href="css/mediaAdapter.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function () {
+              
+                    var url = "api/pk_list";
+                    var gameId=$.cookie('gameId');
+                    var token=$.cookie('token');
+                    $.post(url, //异步处理动态页面
+                            {
+                                gameId:gameId,
+                                token: token
+                            }, //获取类名为"name"文本的值，以NAME异步传值
+                            function (data) {//data为反回值，function进行反回值处理
+                                if (data.retcode == 0)
+                                {
+                                   $(".pk_list").val(data.html);                       
+            
+                               
+                                } else
+                                {
+                                    $(".pk_list").val("<p>server error</p>");//获得得反回值后，将其填入到类名为"content"的文本框中
+                                }
+                            });
+              
+                $(".name").click(function () {
+                    $(".notice").val("");//获得得反回值后，将其填入到类名为"content"的文本框中
+                });
+            });
+        </script>
+        <!-- 最外层 -->
+        <div class="fullPage">
+            <div class="p6">
+                <!-- 内容 -->
+                <div class="content">
+                    <div class="p6_part"> 
+                        <div class="p6_part1">
+                            <img src="img/p6/banner.png">
+                        </div>	
+
+                        <div class="p6_part2">
+                            <div>
+                                <img src="img/p6/clock.png">本轮剩余<span>1</span>天<img src="img/p6/pk.png"><span>1</span>天后进入下一轮
+                            </div>
+                            <div><span>1</span>/<span>8</span></div>
+                        </div>	
+
+                        <div class="p6_part3">
+                            <ul>
+                                <a href="p7.html">
+                                    <li>
+                                        <div><img src="img/p6/imageHeader.png"><div class="nameLeft">某某某</div></div>
+                                        <div class="vs">VS</div>
+                                        <div><div class="nameRight">某某某</div><img src="img/p6/imageHeader.png"></div>
+
+                                    </li>
+                                </a>
+                                <a href="p7.html">
+                                    <li>
+                                        <div><img src="img/p6/imageHeader.png"><div class="nameLeft">某某某</div></div>
+                                        <div class="vs">VS</div>
+                                        <div><div class="nameRight">某某某</div><img src="img/p6/imageHeader.png"></div>
+
+                                    </li>
+                                </a>
+                                <a href="p7.html">
+                                    <li>
+                                        <div><img src="img/p6/imageHeader.png"><div class="nameLeft">某某某</div></div>
+                                        <div class="vs">VS</div>
+                                        <div><div class="nameRight">某某某</div><img src="img/p6/imageHeader.png"></div>
+
+                                    </li>
+                                </a>
+                                <a href="p7.html">
+                                    <li>
+                                        <div><img src="img/p6/imageHeader.png"><div class="nameLeft">某某某</div></div>
+                                        <div class="vs">VS</div>
+                                        <div><div class="nameRight">某某某</div><img src="img/p6/imageHeader.png"></div>
+
+                                    </li>
+                                </a>
+                            </ul>
+                            <div class="slideLeft"><img src="img/p6/leftArrow.png"></div>
+                            <div class="slideRight"><img src="img/p6/rightArrow.png"></div>
+                        </div>	
+
+                    </div>	
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

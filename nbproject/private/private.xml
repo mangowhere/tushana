@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/entity/player/PlayerWriter.java</file>
+            <file>file:/home/mango/桌面/tushana/web/game/login.html</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/api/LoginAction.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/entity/Player.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/zlfun/framework/HtmlResult.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/pk/PkUtils.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/zlfun/framework/db/GenericWriter.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/entity/player/PlayerReader.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/entity/player/PlayerSelect.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/entity/game/GameReader.java</file>
+            <file>file:/home/mango/桌面/tushana/web/game/game.html</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/entity/player/PlayerCreator.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/pk/Pk.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/api/PkList.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/entity/player/PlayerCreate.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/zlfun/framework/db/generic/FieldName.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/GameParam.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/entity/Game.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/tushana/entity/Turn.java</file>
+            <file>file:/home/mango/桌面/tushana/src/java/com/zlfun/framework/db/generic/GenericSelect.java</file>
+        </group>
+    </open-files>
+</project-private>

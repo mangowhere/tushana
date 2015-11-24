@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>用户注册</title>
+        <meta name="keywords" content="用户注册">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta itemprop="name" content="用户注册"/>
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/js.js"></script>
+        <link href="css/commonStyle.css" rel="stylesheet"/>
+        <link href="css/specialStyle.css" rel="stylesheet"/>
+        <link href="css/mediaAdapter.css" rel="stylesheet"/>
+        <link href="css/animate.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function () {
+                $(".login").click(function () {
+                    var url = "api/register"
+                    var passwd1 = $('.passwd').val();
+                    var passwd2 = $('.repasswd').val();
+                    if (passwd1 != passwd2)
+                    {
+                        $(".notice").val("<p>两次密码输入不一致</p>");//获得得反回值后，将其填入到类名为"content"的文本框中
+                        return;
+                    }
+                    $.post(url, //异步处理动态页面
+                            {
+                                name: $(".name").val(),
+                                passwd: $('.passwd').val()
+                            }, //获取类名为"name"文本的值，以NAME异步传值
+                            function (data) {//data为反回值，function进行反回值处理
+                                if (data.ret == 0)
+                                {
+                                    window.location.href = "../join.html";
+                                } else
+                                {
+                                    $(".notice").val("<p>用户名或者手机号已经存在</p>");//获得得反回值后，将其填入到类名为"content"的文本框中
+                                }
+                            });
+                });
+                $(".name").click(function () {
+                    $(".notice").val("");//获得得反回值后，将其填入到类名为"content"的文本框中
+                });
+            });
+        </script>
+        <!-- 最外层 -->
+        <div class="fullPage">
+            <div class="p2">
+                <!-- 内容 -->
+                <div class="content">
+                    <div class="p2_part"> 
+                        <div class="p2_part1">
+                            <!-- 添加：表单内容 -->
+                            <form method="post" id="registForm">
+                                <input placeholder="请输入手机号" type="text" name="tel" class="tel"><br/>
+                                <input placeholder="请输入6-20位中文英文下划线用户名" type="text" name="name"><br/>
+                                <input placeholder="请输入6-20位密码" type="password" class="passwd" name="passwd"><br/>
+                                <input placeholder="请再次输入密码" type="password" class="repasswd" name="repasswd"><br/>
+                            </form>
+                        </div>	
+
+                        <div class="p2_part2">
+                            <div class="regist">注册</div>
+                            <div class="registWay">使用邮箱注册</div>
+                        </div>		
+
+                        <div class="p2_part3">
+                            <div class="userProtocol">注册代表同意<span>用户协议<span></div>
+                                        </div>
+                                        </div>
+
+                                        <div class="p2_part_cover"> 
+                                            <div class="p2_part1">
+                                                <form action="../api/register" method="post" id="registForm_cover">
+                                                    <input placeholder="请输入邮箱号" type="text" class="mail" name="e-mail"><br/>
+                                                    <input placeholder="请输入6-20位中文英文下划线用户名" type="text" name="name"><br/>
+                                                    <input placeholder="请输入6-20位密码" type="password" name="password"><br/>
+                                                    <input placeholder="请再次输入密码" type="password"><br/>
+                                                </form>
+                                            </div>	
+
+                                            <div class="p2_part2">
+                                                <div class="regist">注册</div>
+                                                <div class="registWay">使用手机注册</div>
+                                            </div>		
+                                            <div class="notice"></div>
+                                            <div class="p2_part3">
+                                                <div class="userProtocol">注册代表同意<span>用户协议<span></div>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            </body>
+                                                            </html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>图啥TUSHA</title>
+        <meta name="keywords" content="图啥TUSHA">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+        <meta itemprop="name" content="图啥TUSHA"/>
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/js.js"></script>
+        <script type="text/javascript" src="js/js.js"></script>
+        <link href="css/commonStyle.css" rel="stylesheet"/>
+        <link href="css/specialStyle.css" rel="stylesheet"/>
+        <link href="css/mediaAdapter.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <!-- 最外层 -->
+        <script>
+            /*jslint unparam: true */
+            /*global window, $ */
+            $(function () {
+                'use strict';
+                // Change this to the location of your server-side upload handler:
+                var url = 'api/upload';
+                $('#fileupload').fileupload(
+                        {
+                            url: url,
+                            dataType: 'json',
+                            maxFileSize: 500000000,
+                            done: function (e, data) {
+
+                                console.log("success");
+                                console.log(JSON.stringify(data.result));
+                                var result=data.result;
+                                if(result.retcode==0)
+                                {
+                                    $(".photo").src="/api/photo&id="+result.photo_id
+                                }
+                            },
+                            progressall: function (e, data) {
+                                var progress = parseInt(data.loaded / data.total
+                                        * 100, 10);
+                                $('#progress .progress-bar').css('width',
+                                        progress + '%');
+                            }
+                        }).prop('disabled', !$.support.fileInput).parent()
+                        .addClass($.support.fileInput ? undefined : 'disabled');
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".login").click(function () {
+                    var url = "api/join"
+                    $.post(url, //异步处理动态页面
+                            {
+                                name: $(".name").val(),
+                                passwd: $('.passwd').val()
+                            }, //获取类名为"name"文本的值，以NAME异步传值
+                            function (data) {//data为反回值，function进行反回值处理
+                                if (data.retcode == 0)
+                                {
+                                    $.cookie("token", data.token);
+                                    window.location.href = "../join.html";
+                                } else
+                                {
+                                    $(".notice").val("<p>用户名密码错误</p>");//获得得反回值后，将其填入到类名为"content"的文本框中
+                                }
+                            });
+                });
+                $(".name").click(function () {
+                    $(".notice").val("");//获得得反回值后，将其填入到类名为"content"的文本框中
+                });
+            });
+        </script>
+        <div class="fullPage">
+            <div class="p5">
+                <!-- 内容 -->
+                <div class="content">
+                    <div class="p5_part"> 
+                        <div class="p5_part1">
+                            <div class="imgBackground left">
+                                <img class="photo" src="img/p5/test1.jpg">
+                            </div>
+                            <span class="uploadButton"><span>选择上传文件</span> <!-- The file input field used as target for the file upload widget -->
+                                <input id="fileupload" type="file" name="files[]" multiple>
+                            </span>
+                            <div class="clear"></div>
+                        </div>	
+
+                        <div class="p5_part2">
+                            <div class="acivityTitle">选择活动</div>
+                            <ul class="activityList">
+                                <li>
+                                    <img src="img/p5/li.png"><span>活动名称1</span>
+                                </li>
+                                <li class="active">
+                                    <img src="img/p5/li_active.png"><span>活动名称2</span>
+                                </li>
+                                <li>
+                                    <img src="img/p5/li.png"><span>活动名称3</span>
+                                </li>
+                                <li>
+                                    <img src="img/p5/li.png"><span>活动名称4</span>
+                                </li>
+                            </ul>
+                        </div>	
+
+                        <div class="p5_part3">
+                            <div class="acivityTitle">选择标签</div>
+                            <table class="labelTable">
+                                <tr>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td class="active">
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                    <td>
+                                        <div>标签</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>	
+
+                        <div class="p5_part4">
+                            <a href="p6.html"><div class="submitButton">提交</div></a>
+                            <div class="joinKnow">提交代表用户同意<span>参赛须知</span></div>
+                        </div>
+
+                    </div>	
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
